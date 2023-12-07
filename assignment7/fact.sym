@@ -1,0 +1,269 @@
+#-------         BOOTSTRAP          -------
+@256
+D=A
+@SP
+M=D
+#-------      call Main.main 0      -------
+@Main.main$ret.0
+D=A
+@SP
+AM=M+1
+A=A-1
+M=D
+@LCL
+D=M
+@SP
+AM=M+1
+A=A-1
+M=D
+@ARG
+D=M
+@SP
+AM=M+1
+A=A-1
+M=D
+@THIS
+D=M
+@SP
+AM=M+1
+A=A-1
+M=D
+@THAT
+D=M
+@SP
+AM=M+1
+A=A-1
+M=D
+@SP
+D=M
+@0
+D=D-A
+@5
+D=D-A
+@ARG
+M=D
+@SP
+D=M
+@LCL
+M=D
+@Main.main
+JUMP
+(Main.main$ret.0)
+goto _END_PROGRAM_
+#-------    function Main.fact 2    -------
+(Main.fact)
+@0
+D=A
+@SP
+AM=M+1
+A=A-1
+M=D
+@SP
+AM=M+1
+A=A-1
+M=D
+#-------      push ARGUMENT 0       -------
+@ARG
+A=M
+D=M
+@SP
+AM=M+1
+A=A-1
+M=D
+#-------        pop LOCAL 0         -------
+@SP
+AM=M-1
+D=M
+@LCL
+A=M
+M=D
+#-------      push CONSTANT 1       -------
+@1
+D=A
+@SP
+AM=M+1
+A=A-1
+M=D
+#-------        pop LOCAL 1         -------
+@SP
+AM=M-1
+D=M
+@LCL
+A=M
+A=A+1
+M=D
+#-------         label LOOP         -------
+(Main.fact.LOOP)
+#-------        push LOCAL 0        -------
+@LCL
+A=M
+D=M
+@SP
+AM=M+1
+A=A-1
+M=D
+#-------      push CONSTANT 1       -------
+@1
+D=A
+@SP
+AM=M+1
+A=A-1
+M=D
+#-------             GT             -------
+@SP
+AM=M-1
+B=M
+@SP
+AM=M-1
+C=M
+C>B? ____GT_BEGIN0002
+D=0
+@SP
+AM=M+1
+A=A-1
+M=D
+GOTO ____GT_END0002
+(____GT_BEGIN0002)
+D=!0
+@SP
+AM=M+1
+A=A-1
+M=D
+(____GT_END0002)
+#-------     if-goto CALCULATE      -------
+@SP
+AM=M-1
+D=M
+D!=0? Main.fact.CALCULATE
+#-------          goto END          -------
+goto Main.fact.END
+#-------      label CALCULATE       -------
+(Main.fact.CALCULATE)
+#-------        push LOCAL 1        -------
+@LCL
+A=M
+A=A+1
+D=M
+@SP
+AM=M+1
+A=A-1
+M=D
+#-------        push LOCAL 0        -------
+@LCL
+A=M
+D=M
+@SP
+AM=M+1
+A=A-1
+M=D
+#-------            MUL             -------
+@SP
+AM=M-1
+B=M
+@SP
+AM=M-1
+C=M
+D=C*B
+@SP
+AM=M+1
+A=A-1
+M=D
+#-------        pop LOCAL 1         -------
+@SP
+AM=M-1
+D=M
+@LCL
+A=M
+A=A+1
+M=D
+#-------        push LOCAL 0        -------
+@LCL
+A=M
+D=M
+@SP
+AM=M+1
+A=A-1
+M=D
+#-------      push CONSTANT 1       -------
+@1
+D=A
+@SP
+AM=M+1
+A=A-1
+M=D
+#-------            SUB             -------
+@SP
+AM=M-1
+B=M
+@SP
+AM=M-1
+C=M
+D=C-B
+@SP
+AM=M+1
+A=A-1
+M=D
+#-------        pop LOCAL 0         -------
+@SP
+AM=M-1
+D=M
+@LCL
+A=M
+M=D
+#-------         goto LOOP          -------
+goto Main.fact.LOOP
+#-------         label END          -------
+(Main.fact.END)
+#-------        push LOCAL 1        -------
+@LCL
+A=M
+A=A+1
+D=M
+@SP
+AM=M+1
+A=A-1
+M=D
+#-------           return           -------
+@LCL
+D=M
+@R13
+M=D
+@5
+A=D-A
+D=M
+@R14
+M=D
+@SP
+A=M-1
+D=M
+@ARG
+A=M
+M=D
+@ARG
+D=M+1
+@SP
+M=D
+@R13
+AM=M-1
+D=M
+@THAT
+M=D
+@R13
+AM=M-1
+D=M
+@THIS
+M=D
+@R13
+AM=M-1
+D=M
+@ARG
+M=D
+@R13
+AM=M-1
+D=M
+@LCL
+M=D
+@R14
+A=M
+JUMP
+(_END_PROGRAM_)
